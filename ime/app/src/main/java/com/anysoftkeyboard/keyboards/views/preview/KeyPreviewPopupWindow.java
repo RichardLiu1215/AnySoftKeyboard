@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
+import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -98,6 +99,8 @@ class KeyPreviewPopupWindow implements KeyPreview {
           TypedValue.COMPLEX_UNIT_PX, mPreviewPopupTheme.getPreviewKeyTextSize());
     }
 
+    mPreviewText.setMinWidth((int)(mPreviewText.getTextSize()) + mPreviewText.getCompoundPaddingLeft() + mPreviewText.getCompoundPaddingRight());
+    mPreviewText.forceLayout();
     mPreviewText.measure(
         View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
         View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
@@ -150,8 +153,9 @@ class KeyPreviewPopupWindow implements KeyPreview {
       contentHeight = Math.max(previewKeyBackground.getMinimumHeight(), contentHeight);
     }
 
-    final int popupPreviewX = previewPosition.x - contentWidth / 2;
-    final int popupPreviewY = previewPosition.y - contentHeight;
+    final DisplayMetrics displayMetrics = mParentView.getResources().getDisplayMetrics();
+    final int popupPreviewX = Math.min(Math.max(previewPosition.x - contentWidth / 2, 0), displayMetrics.widthPixels - contentWidth);
+    final int popupPreviewY = Math.max(0, previewPosition.y - contentHeight);
 
     if (mPopupWindow.isShowing()) {
       mPopupWindow.update(popupPreviewX, popupPreviewY, contentWidth, contentHeight);

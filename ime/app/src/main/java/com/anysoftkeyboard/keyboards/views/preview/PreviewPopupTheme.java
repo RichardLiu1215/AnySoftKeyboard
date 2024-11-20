@@ -16,7 +16,7 @@ public class PreviewPopupTheme {
   private int mPreviewKeyTextColor;
   private Typeface mKeyStyle = Typeface.DEFAULT;
   private int mVerticalOffset;
-  @PreviewAnimationType private int mPreviewAnimationType = ANIMATION_STYLE_APPEAR;
+  @PreviewAnimationType private int mPreviewAnimationType = ANIMATION_STYLE_NONE;
 
   int getPreviewKeyTextSize() {
     return mPreviewKeyTextSize;
