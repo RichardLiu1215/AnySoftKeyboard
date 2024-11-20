@@ -55,8 +55,9 @@ class KeyPreviewPopupWindow implements KeyPreview {
             .getConstantState()
             .newDrawable(context.getResources()));
     mPopupWindow.setContentView(mPreviewLayout);
-    mOffsetContentByKeyHeight =
-        shouldExtendPopupHeight(previewPopupTheme.getPreviewAnimationType());
+//    mOffsetContentByKeyHeight =
+//        shouldExtendPopupHeight(previewPopupTheme.getPreviewAnimationType());
+    mOffsetContentByKeyHeight = false;
     mPopupWindow.setTouchable(false);
     mPopupWindow.setAnimationStyle(
         getKeyPreviewAnimationStyle(previewPopupTheme.getPreviewAnimationType()));

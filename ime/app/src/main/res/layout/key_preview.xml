@@ -29,7 +29,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="0px"
-        android:padding="0px"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:layout_marginBottom="16dp"
         android:layout_gravity="center"
         android:gravity="center"/>

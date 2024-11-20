@@ -42,7 +42,7 @@
     <!-- default values for custom hint align are in arrays.xmlso that
          they are near the array of valid values for that preference -->
 
-    <string name="settings_default_key_press_preview_popup_position">above_key</string>
+    <string name="settings_default_key_press_preview_popup_position">above_keyboard</string>
 
     <string name="settings_default_tweak_animations_level">some</string>
 
@@ -57,7 +57,7 @@
     <string name="settings_default_swipe_distance_threshold">140</string>
 
     <string name="settings_default_multitap_timeout">700</string>
-    <string name="settings_default_long_press_timeout">350</string>
+    <string name="settings_default_long_press_timeout">1500</string>
 
     <string name="settings_default_force_locale_setting">System</string>
 
