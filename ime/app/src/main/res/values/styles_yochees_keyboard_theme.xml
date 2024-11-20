@@ -107,7 +107,7 @@
         <item name="hintLabelVAlign">top</item>
         <item name="hintLabelAlign">right</item>
 
-        <item name="previewAnimationType">extend_key</item>
+        <item name="previewAnimationType">none</item>
     </style>
 
     <style name="YocheesDarkTheme"
