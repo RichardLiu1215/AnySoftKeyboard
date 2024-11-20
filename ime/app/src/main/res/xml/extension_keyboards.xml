@@ -223,6 +223,14 @@
         index="16"
         />
 
+    <ExtensionKeyboard
+        id="2e918f5f-b62f-48d0-a695-123456abcdef"
+        nameResId="@string/extension_kbd_bottom_simple"
+        extensionKeyboardResId="@xml/ext_kbd_bottom_row_myfirst"
+        extensionKeyboardType="@integer/extension_keyboard_type_bottom_row"
+        description=""
+        index="17"
+        />
 
     <!-- top extension keyboards -->
     <ExtensionKeyboard
