@@ -284,7 +284,7 @@ public abstract class AnySoftKeyboard extends AnySoftKeyboardColorizeNavBar {
     updateShiftStateNow();
 
     if (BuildConfig.DEBUG) {
-      getInputViewContainer().addStripAction(mDevToolsAction, false);
+      // getInputViewContainer().addStripAction(mDevToolsAction, false);
     }
   }
 
