@@ -85,8 +85,8 @@ public class AnyKeyboardView extends AnyKeyboardViewWithExtraDraw
   public AnyKeyboardView(Context context, AttributeSet attrs, int defStyle) {
     super(context, attrs, defStyle);
 
-    mWatermarkDimen = getResources().getDimensionPixelOffset(R.dimen.watermark_size);
-    mWatermarkMargin = getResources().getDimensionPixelOffset(R.dimen.watermark_margin);
+    mWatermarkDimen = 0;//getResources().getDimensionPixelOffset(R.dimen.watermark_size);
+    mWatermarkMargin = 0;//getResources().getDimensionPixelOffset(R.dimen.watermark_margin);
     mMinimumKeyboardBottomPadding = mWatermarkDimen + mWatermarkMargin;
     mExtraBottomOffset = mMinimumKeyboardBottomPadding;
     mGestureDetector =
