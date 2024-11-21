@@ -4,7 +4,7 @@
     xmlns:ask="http://schemas.android.com/apk/res-auto"
     android:keyWidth="8.333325%p"
     android:keyHeight="@integer/key_normal_height"
-    ask:showPreview="false"
+    ask:showPreview="true"
     ask:autoCap="false">
     <Row>
         <Key android:codes="3653" android:keyLabel="ๅ" ask:keyOutputTyping="ๅ" ask:isShiftAlways="true" ask:shiftedCodes="0043" ask:shiftedKeyLabel="+" ask:shiftedKeyOutputTyping="+" android:keyEdgeFlags="left" />
