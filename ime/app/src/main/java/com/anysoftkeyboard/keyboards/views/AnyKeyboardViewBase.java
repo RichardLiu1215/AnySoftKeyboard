@@ -1213,7 +1213,7 @@ public class AnyKeyboardViewBase extends View implements InputViewBinder, Pointe
           if (keyIsSpace && drawKeyboardNameText) {
             // now a little hack, I'll set the label now, so it get
             // drawn.
-            label = mKeyboardName;
+            label = null;// mKeyboardName;
           }
         } else {
           // ho... no icon.
@@ -1413,7 +1413,7 @@ public class AnyKeyboardViewBase extends View implements InputViewBinder, Pointe
         paint.setTextSize(textSize);
         textWidth = paint.measureText(label, 0, label.length());
         if (textWidth > width) {
-          textSize = 0f;
+          textSize = width * textSize / textWidth;
           paint.setTextSize(textSize);
           textWidth = paint.measureText(label, 0, label.length());
         }
