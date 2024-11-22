@@ -26,6 +26,6 @@
         landscapeResId="@xml/ca_fr_qwerty"
         id="33bf649e-80b5-4e1e-a6c5-50af8c41c1db" defaultDictionaryLocale="fr" description="@string/keyboard_qwerty_description" index="6" />
     <Keyboard nameResId="@string/keyboard_qwerty_with_symbols_name" iconResId="@drawable/ic_status_french" layoutResId="@xml/qwerty_with_symbols"
-        landscapeResId="@xml/qwerty_with_symbols"
+        landscapeResId="@xml/french_qwerty_with_symbols"
         id="9b21a2b6-afcc-45da-9950-b95d02306993" defaultDictionaryLocale="fr" description="@string/keyboard_qwerty_with_symbols_description" index="7" />
 </Keyboards>

@@ -7,7 +7,7 @@
         iconResId="@drawable/ic_status_catalan"
         id="9f7f5bcb-a015-4387-b63e-1eff62be4e06"
         index="1"
-        layoutResId="@xml/qwerty"
+        layoutResId="@xml/catalan_qwerty"
         nameResId="@string/catalan_keyboard"
         physicalKeyboardMappingResId="@xml/english_physical"
         additionalIsLetterExceptions="·-" />

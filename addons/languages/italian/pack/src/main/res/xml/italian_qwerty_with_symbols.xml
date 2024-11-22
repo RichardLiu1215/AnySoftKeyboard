@@ -24,7 +24,7 @@
         <Key android:codes="d" android:popupCharacters="#%đďḏ" ask:hintLabel="# %"/>
         <Key android:codes="f" android:popupCharacters="^\u0026" ask:hintLabel="^ \u0026"/>
         <Key android:codes="g" android:popupCharacters="`°ĝ" ask:hintLabel="` °"/>
-        <Key android:codes="h" android:popupKeyboard="@xml/popup_querty_with_symbols_h" ask:hintLabel="_ ~"/>
+        <Key android:codes="h" android:popupKeyboard="@xml/italian_popup_querty_with_symbols_h" ask:hintLabel="_ ~"/>
         <Key android:codes="j" android:popupCharacters="\\|ĵ" ask:hintLabel="\\ |"/>
         <Key android:codes="k" android:popupCharacters="([{⸢" ask:hintLabel="("/>
         <Key android:codes="l" android:popupCharacters=")]}⸣ľĺł£" ask:hintLabel=")"/>

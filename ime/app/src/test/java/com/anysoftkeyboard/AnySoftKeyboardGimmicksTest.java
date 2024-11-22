@@ -1216,8 +1216,8 @@ public class AnySoftKeyboardGimmicksTest extends AnySoftKeyboardBaseTest {
         new ExternalAnyKeyboard(
             currentKeyboard.getKeyboardAddOn(),
             ApplicationProvider.getApplicationContext(),
-            R.xml.qwerty,
-            R.xml.qwerty,
+            R.xml.danish_qwerty,
+            R.xml.danish_qwerty,
             "fr",
             R.drawable.ic_status_english,
             0,
