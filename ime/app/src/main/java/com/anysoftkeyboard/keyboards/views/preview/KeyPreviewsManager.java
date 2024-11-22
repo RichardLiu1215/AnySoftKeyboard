@@ -145,7 +145,10 @@ public class KeyPreviewsManager implements KeyPreviewsController {
 
   private boolean isKeyCodeShouldNotBeShown(int code) {
     // code <= 0 || code == KeyCodes.ENTER || code == KeyCodes.SPACE;
-    return code == KeyCodes.KEYBOARD_MODE_CHANGE || code == KeyCodes.ENTER || code == KeyCodes.SPACE;
+    return code == KeyCodes.KEYBOARD_MODE_CHANGE
+            || code == KeyCodes.MODE_ALPHABET
+            || code == KeyCodes.ENTER
+            || code == KeyCodes.SPACE;
   }
 
   @Override
