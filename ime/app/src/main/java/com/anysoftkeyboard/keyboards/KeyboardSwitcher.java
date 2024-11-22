@@ -41,6 +41,7 @@ import com.menny.android.anysoftkeyboard.R;
 import io.reactivex.disposables.CompositeDisposable;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -101,6 +102,7 @@ public class KeyboardSwitcher {
   @NonNull @VisibleForTesting protected AnyKeyboard[] mSymbolsKeyboardsArray = EMPTY_AnyKeyboards;
   @NonNull @VisibleForTesting protected AnyKeyboard[] mAlphabetKeyboards = EMPTY_AnyKeyboards;
   @NonNull private KeyboardAddOnAndBuilder[] mAlphabetKeyboardsCreators = EMPTY_Creators;
+  private String mBuiltLocale = null;
   // this flag will be used for inputs which require specific layout
   // thus disabling the option to move to another layout
   private boolean mKeyboardLocked = false;
@@ -433,18 +435,31 @@ public class KeyboardSwitcher {
   }
 
   private void ensureKeyboardsAreBuilt() {
+    final String currentLocale = Locale.getDefault().getLanguage();
+    final boolean localeChanged = !currentLocale.equals(mBuiltLocale);
     if (mAlphabetKeyboards.length == 0
         || mSymbolsKeyboardsArray.length == 0
-        || mAlphabetKeyboardsCreators.length == 0) {
-      if (mAlphabetKeyboards.length == 0 || mAlphabetKeyboardsCreators.length == 0) {
+        || mAlphabetKeyboardsCreators.length == 0
+        || localeChanged) {
+      if (mAlphabetKeyboards.length == 0 || mAlphabetKeyboardsCreators.length == 0 || localeChanged) {
         final List<KeyboardAddOnAndBuilder> enabledKeyboardBuilders =
             AnyApplication.getKeyboardFactory(mContext).getEnabledAddOns();
+        final List<KeyboardAddOnAndBuilder> filteredKeyboardBuilders = new ArrayList<>();
+        for (KeyboardAddOnAndBuilder builder : enabledKeyboardBuilders) {
+          final String keyboardLocale = builder.getKeyboardLocale();
+          if (keyboardLocale.equals(Locale.US.getLanguage())) {
+           filteredKeyboardBuilders.add(builder);
+          } else if (keyboardLocale.equals(Locale.getDefault().getLanguage())) {
+           filteredKeyboardBuilders.add(0, builder);
+          }
+        }
         mAlphabetKeyboardsCreators =
-            enabledKeyboardBuilders.toArray(new KeyboardAddOnAndBuilder[0]);
+            filteredKeyboardBuilders.toArray(new KeyboardAddOnAndBuilder[0]);
         mInternetInputLayoutIndex = findIndexOfInternetInputLayout();
         mAlphabetKeyboards = new AnyKeyboard[mAlphabetKeyboardsCreators.length];
         mLastSelectedKeyboardIndex = 0;
-        mKeyboardSwitchedListener.onAvailableKeyboardsChanged(enabledKeyboardBuilders);
+        mKeyboardSwitchedListener.onAvailableKeyboardsChanged(filteredKeyboardBuilders);
+        mBuiltLocale = currentLocale;
       }
       if (mSymbolsKeyboardsArray.length == 0) {
         mSymbolsKeyboardsArray = new AnyKeyboard[SYMBOLS_KEYBOARDS_COUNT];
