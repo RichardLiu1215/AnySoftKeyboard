@@ -81,12 +81,13 @@ public class ModifierKeyState {
     } else {
       switch (mLogicalState) {
         case INACTIVE:
-          if (mSupportsLockedState
-              && longPressTime < (SystemClock.elapsedRealtime() - mPressTime)) {
-            mLogicalState = LOCKED;
-          } else {
-            mLogicalState = ACTIVE;
-          }
+//          if (mSupportsLockedState
+//              && longPressTime < (SystemClock.elapsedRealtime() - mPressTime)) {
+//            mLogicalState = LOCKED;
+//          } else {
+//            mLogicalState = ACTIVE;
+//          }
+          mLogicalState = ACTIVE;
           mActiveStateStartTime = SystemClock.elapsedRealtime();
           mConsumed = false;
           break;

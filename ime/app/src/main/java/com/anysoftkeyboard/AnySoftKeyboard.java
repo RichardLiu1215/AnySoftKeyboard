@@ -1148,14 +1148,15 @@ public abstract class AnySoftKeyboard extends AnySoftKeyboardColorizeNavBar {
     super.onPress(primaryCode);
     InputConnection ic = getCurrentInputConnection();
 
-    if (primaryCode == KeyCodes.SHIFT) {
-      mShiftKeyState.onPress();
-      // Toggle case on selected characters
-      toggleCaseOfSelectedCharacters();
-      handleShift();
-    } else {
-      mShiftKeyState.onOtherKeyPressed();
-    }
+//    if (primaryCode == KeyCodes.SHIFT) {
+//      mShiftKeyState.onPress();
+//      // Toggle case on selected characters
+//      toggleCaseOfSelectedCharacters();
+//      handleShift();
+//    } else {
+//      mShiftKeyState.onOtherKeyPressed();
+//    }
+    mShiftKeyState.onOtherKeyPressed();
 
     if (primaryCode == KeyCodes.CTRL) {
       mControlKeyState.onPress();
