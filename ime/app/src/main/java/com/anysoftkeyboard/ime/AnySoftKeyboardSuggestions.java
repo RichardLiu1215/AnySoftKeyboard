@@ -365,7 +365,7 @@ public abstract class AnySoftKeyboardSuggestions extends AnySoftKeyboardKeyboard
     mPredictionOn = mPredictionOn && mShowSuggestions;
 
     mCancelSuggestionsAction.setCancelIconVisible(false);
-    getInputViewContainer().addStripAction(mCancelSuggestionsAction, false);
+    // getInputViewContainer().addStripAction(mCancelSuggestionsAction, false);
     getInputViewContainer().setActionsStripVisibility(isPredictionOn());
     clearSuggestions();
   }
