@@ -1213,7 +1213,7 @@ public class AnyKeyboardViewBase extends View implements InputViewBinder, Pointe
           if (keyIsSpace && drawKeyboardNameText) {
             // now a little hack, I'll set the label now, so it get
             // drawn.
-            label = null;// mKeyboardName;
+            label = mKeyboardName;
           }
         } else {
           // ho... no icon.

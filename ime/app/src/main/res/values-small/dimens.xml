@@ -18,7 +18,7 @@
 */
 -->
 <resources>
-    <dimen name="default_key_height">38dp</dimen>
-    <dimen name="default_key_half_height">25dp</dimen>
-    <dimen name="default_key_tall_height">43dp</dimen>
+    <dimen name="default_key_height">35dp</dimen>
+    <dimen name="default_key_half_height">23dp</dimen>
+    <dimen name="default_key_tall_height">38dp</dimen>
 </resources>

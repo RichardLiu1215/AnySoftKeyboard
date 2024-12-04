@@ -118,7 +118,7 @@
         <item name="keyboardNameTextColor">#B3B3B3</item>
 
         <!-- key preview (feedback) -->
-        <item name="keyPreviewBackground">@drawable/dark_btn_key_preview_background</item>
+        <item name="keyPreviewBackground">@drawable/dark_background</item>
         <item name="keyPreviewTextColor">#FFFFFFFF</item>
         <item name="previewGestureTextColor">#B3B3B3</item>
         <item name="hintTextSize">0px</item>
