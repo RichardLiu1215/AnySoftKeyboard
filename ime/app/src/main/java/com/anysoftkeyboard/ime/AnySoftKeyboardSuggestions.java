@@ -1303,6 +1303,7 @@ public abstract class AnySoftKeyboardSuggestions extends AnySoftKeyboardKeyboard
   }
 
   public void removeFromUserDictionary(String wordToRemove) {
+    if (true) return;
     mInputSessionDisposables.add(
         Observable.just(wordToRemove)
             .subscribeOn(RxSchedulers.background())

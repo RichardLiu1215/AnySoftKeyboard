@@ -415,6 +415,7 @@ public class CandidateView extends View implements ThemeableChild {
   }
 
   public void showAddToDictionaryHint(CharSequence word) {
+    if (true) return;
     ArrayList<CharSequence> suggestions = new ArrayList<>();
     suggestions.add(word);
     suggestions.add(mAddToDictionaryHint);
