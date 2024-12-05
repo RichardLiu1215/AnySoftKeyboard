@@ -26,6 +26,7 @@ import android.graphics.Paint.Align;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.InsetDrawable;
 import android.text.Layout.Alignment;
 import android.text.StaticLayout;
 import android.text.TextPaint;
@@ -36,7 +37,11 @@ import android.view.MotionEvent;
 import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
+import androidx.core.content.res.ResourcesCompat;
+import androidx.core.util.TypedValueCompat;
+
 import com.anysoftkeyboard.addons.AddOn;
+import com.anysoftkeyboard.api.KeyCodes;
 import com.anysoftkeyboard.base.utils.Logger;
 import com.anysoftkeyboard.ime.AnySoftKeyboardSuggestions;
 import com.anysoftkeyboard.overlay.OverlayData;
@@ -88,6 +93,9 @@ public class CandidateView extends View implements ThemeableChild {
   private boolean mAlwaysUseDrawText;
   @NonNull private Disposable mDisposable = Disposables.empty();
 
+  private Drawable mCloseKeyboardDrawable;
+  private boolean mCloseKeyboardTouching;
+
   public CandidateView(Context context, AttributeSet attrs) {
     this(context, attrs, 0);
   }
@@ -104,6 +112,12 @@ public class CandidateView extends View implements ThemeableChild {
         context.getResources().getDimensionPixelOffset(R.dimen.candidate_min_touchable_width);
     mGestureDetector =
         new GestureDetector(context, new CandidateStripGestureListener(minTouchableWidth));
+
+    final int arrowDropDownSize = (int) TypedValueCompat.dpToPx(30f, context.getResources().getDisplayMetrics());
+    final int arrowDropDownInset = (int) (arrowDropDownSize * .1f);
+    mCloseKeyboardDrawable = ResourcesCompat.getDrawable(context.getResources(), R.drawable.ic_arrow_drop_down, context.getTheme());
+    mCloseKeyboardDrawable = new InsetDrawable(mCloseKeyboardDrawable, arrowDropDownInset);
+    mCloseKeyboardDrawable.setBounds(0, 0, arrowDropDownSize, arrowDropDownSize);
 
     setWillNotDraw(false);
     setHorizontalScrollBarEnabled(false);
@@ -277,6 +291,13 @@ public class CandidateView extends View implements ThemeableChild {
     final int scrollX = getScrollX();
     final boolean scrolled = mScrolled;
 
+    final Rect arrowDropDownBounds = mCloseKeyboardDrawable.getBounds();
+    final int arrowDropDownLeft = scrollX + getWidth() - arrowDropDownBounds.width();
+    final int arrowDropDownTop = (height - arrowDropDownBounds.height()) / 2;
+
+    canvas.save();
+    canvas.clipRect(0, 0, arrowDropDownLeft, height);
+
     final ThemeResourcesHolder themeResources = mThemeOverlayCombiner.getThemeResources();
     int x = 0;
     for (int i = 0; i < count; i++) {
@@ -360,6 +381,13 @@ public class CandidateView extends View implements ThemeableChild {
       // paint.setTypeface(Typeface.DEFAULT);
       x += wordWidth;
     }
+
+    canvas.restore();
+    canvas.translate(arrowDropDownLeft, arrowDropDownTop);
+    mCloseKeyboardDrawable.draw(canvas);
+    canvas.translate(-arrowDropDownLeft, -arrowDropDownTop);
+    x += arrowDropDownBounds.width();
+
     mTotalWidth = x;
     if (mTargetScrollX != scrollX) {
       scrollToTarget();
@@ -451,13 +479,29 @@ public class CandidateView extends View implements ThemeableChild {
 
   @Override
   public boolean onTouchEvent(@NonNull MotionEvent me) {
+    int action = me.getAction();
+    final int x = (int) me.getX();
+    final int y = (int) me.getY();
+
+    if (action == MotionEvent.ACTION_DOWN) {
+      if (x >= getWidth() - mCloseKeyboardDrawable.getBounds().width()) {
+        mCloseKeyboardTouching = true;
+        return true;
+      }
+    } else if (mCloseKeyboardTouching) {
+      if (action == MotionEvent.ACTION_UP && x >= getWidth() - mCloseKeyboardDrawable.getBounds().width()) {
+        mCloseKeyboardTouching = false;
+        mService.onKey(KeyCodes.CANCEL, null, -1, new int[] {KeyCodes.CANCEL}, false /*not directly pressed the UI key*/);
+      } else if (action == MotionEvent.ACTION_CANCEL) {
+        mCloseKeyboardTouching = false;
+      }
+      return true;
+    }
+
     if (mGestureDetector.onTouchEvent(me)) {
       return true;
     }
 
-    int action = me.getAction();
-    final int x = (int) me.getX();
-    final int y = (int) me.getY();
     mTouchX = x;
 
     switch (action) {
