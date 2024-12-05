@@ -208,7 +208,8 @@ public abstract class AnyKeyboard extends Keyboard {
             break;
           case KeyCodes.MODE_ALPHABET:
             if (KeyboardPrefs.alwaysHideLanguageKey(askContext)
-                || !AnyApplication.getKeyboardFactory(mLocalContext).hasMultipleAlphabets()) {
+                /*|| !AnyApplication.getKeyboardFactory(mLocalContext).hasMultipleAlphabets()*/
+                || Locale.getDefault().getLanguage().equals(Locale.US.getLanguage())) {
               // need to hide this key
               foundLanguageKeyIndices.add(keyIndex);
               Logger.d(TAG, "Found a redundant language key at index %d", keyIndex);
