@@ -157,6 +157,7 @@ public abstract class AnySoftKeyboardSwipeListener extends AnySoftKeyboardPopTex
 
   @Override
   public void onSwipeRight(boolean twoFingersGesture) {
+    if (true) return;
     final int keyCode;
     if (mFirstDownKeyCode == KeyCodes.DELETE) {
       keyCode = KeyCodes.DELETE_WORD;
@@ -174,6 +175,7 @@ public abstract class AnySoftKeyboardSwipeListener extends AnySoftKeyboardPopTex
 
   @Override
   public void onSwipeLeft(boolean twoFingersGesture) {
+    if (true) return;
     final int keyCode;
     if (mFirstDownKeyCode == KeyCodes.DELETE) {
       keyCode = KeyCodes.DELETE_WORD;
@@ -192,11 +194,13 @@ public abstract class AnySoftKeyboardSwipeListener extends AnySoftKeyboardPopTex
 
   @Override
   public void onSwipeDown() {
+    if (true) return;
     doOnKeyForGesture(mSwipeDownKeyCode);
   }
 
   @Override
   public void onSwipeUp() {
+    if (true) return;
     final int keyCode =
         mFirstDownKeyCode == KeyCodes.SPACE ? mSwipeUpFromSpaceBarKeyCode : mSwipeUpKeyCode;
     doOnKeyForGesture(keyCode);
