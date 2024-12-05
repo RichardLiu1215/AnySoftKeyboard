@@ -42,6 +42,12 @@ android {
             matchingFallbacks = ['debug']
         }
     }
+
+    applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = 'AnySoftKeyboard-' + variant.name + '-' + android.defaultConfig.versionName + '.apk'
+        }
+    }
 }
 
 //adding TESTING_BUILD
