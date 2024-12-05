@@ -104,23 +104,21 @@ dependencies {
     implementation project(':api')
     implementation project(':addons:base')
 
-    implementation project(':addons:languages:english:pack')
-    implementation project(':addons:languages:thai:pack')
-    implementation project(':addons:languages:swedish:pack')
-    // implementation project(':addons:languages:malay:pack') // 假设存在对应的模块
-    implementation project(':addons:languages:norwegian:pack')
-    implementation project(':addons:languages:finnish:pack')
-    implementation project(':addons:languages:danish:pack')
-    // implementation project(':addons:languages:spanish:pack') // 假设存在对应的模块
-    // implementation project(':addons:languages:vietnamese:pack') // 假设存在对应的模块
-    implementation project(':addons:languages:italian:pack')
-    implementation project(':addons:languages:serbian:pack')
-    implementation project(':addons:languages:indonesian:pack')
-    implementation project(':addons:languages:hebrew:pack')
-    implementation project(':addons:languages:czech:pack')
-    implementation project(':addons:languages:arabic:pack')
-    implementation project(':addons:languages:dutch:pack')
-    implementation project(':addons:languages:german:pack')
+    implementation project(':addons:languages:english:pack')    // en
+    implementation project(':addons:languages:thai:pack')       // th
+    implementation project(':addons:languages:swedish:pack')    // sv
+    implementation project(':addons:languages:norwegian:pack')  // no
+    implementation project(':addons:languages:finnish:pack')    // fi
+    implementation project(':addons:languages:danish:pack')     // da
+    implementation project(':addons:languages:spain:pack')      // es
+    implementation project(':addons:languages:italian:pack')    // it
+    implementation project(':addons:languages:serbian:pack')    // sr
+    implementation project(':addons:languages:indonesian:pack') // in
+    implementation project(':addons:languages:hebrew:pack')     // iw
+    implementation project(':addons:languages:czech:pack')      // cs
+    implementation project(':addons:languages:arabic:pack')     // ar
+    implementation project(':addons:languages:dutch:pack')      // nl
+    implementation project(':addons:languages:german:pack')     // de
 
     implementation project(':ime:base')
     implementation project(':ime:base-rx')
