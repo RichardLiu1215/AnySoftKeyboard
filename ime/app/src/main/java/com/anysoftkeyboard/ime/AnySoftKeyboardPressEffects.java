@@ -258,8 +258,8 @@ public abstract class AnySoftKeyboardPressEffects extends AnySoftKeyboardClipboa
       Long random /*ignoring this one*/,
       Boolean isPasswordField) {
     if (enabled
-        && animationsLevel != AnimationsLevel.None
-        && Boolean.FALSE.equals(isPasswordField)) {
+        /* && animationsLevel != AnimationsLevel.None
+        && Boolean.FALSE.equals(isPasswordField) */) {
       final PositionCalculator positionCalculator;
       final int maxPopups;
       if ("above_key".equals(position)) {
